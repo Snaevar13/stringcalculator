@@ -19,6 +19,16 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
+		if(numbers.startsWith("//[")){
+			int j = 3;
+			String longdelimiter = "";
+			while(numbers.charAt(j) != ']'){
+				longdelimiter += numbers.charAt(j);
+				j++;
+			}
+			numbers = numbers.substring(5 + longdelimiter.length());
+			return numbers.split(",|\n|" + longdelimiter);
+		}
 		if(numbers.startsWith("//")){
 			Character delimiter = numbers.charAt(2);
 			numbers = numbers.substring(4);
