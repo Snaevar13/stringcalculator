@@ -43,7 +43,7 @@ public class CalculatorTest {
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
     @Test
-    public void testNegativeNumbers() throws IllegalArgumentException {
+    public void testNegativeNumbers() {
     	try{
     		Calculator.add("-1,2,-3"); 
     	}
@@ -52,5 +52,8 @@ public class CalculatorTest {
     		e.getMessage().contains("Negatives not allowed:"));
     	}
     }
-    
+    @Test 
+    public void testLargerThan1000(){
+    	assertEquals(2, Calculator.add("1001,2"));
+    }
  }  
