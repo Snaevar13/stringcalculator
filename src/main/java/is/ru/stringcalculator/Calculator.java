@@ -6,7 +6,8 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		else if(text.contains(",") || text.contains("\n")){
+		else if(text.contains(",") || text.contains("\n")
+			|| text.contains("//")){
 			return sum(splitNumbers(text));
 		}
 		else
@@ -18,6 +19,11 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
+		if(numbers.startsWith("//")){
+			Character delimiter = numbers.charAt(2);
+			numbers = numbers.substring(4);
+			return numbers.split(",|\n|" + delimiter);
+		}
 	    return numbers.split(",|\n");
 	}
       
@@ -28,7 +34,4 @@ public class Calculator {
 		}
 		return total;
     }
-
-
-
 }
